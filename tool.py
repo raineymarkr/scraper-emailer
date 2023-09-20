@@ -54,7 +54,7 @@ wait = WebDriverWait(driver, 20)  # Increase to 20 seconds
 
 # Loop through each plan ID and perform lookup
 for plan_id in plan_ids:
-    driver.get(f"https://crm.zoho.com/crm/org761441520/search?searchword={plan_id}")
+    driver.get(f"https://crm-link.com/search?searchword={plan_id}")
   
 
    
