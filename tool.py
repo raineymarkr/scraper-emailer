@@ -43,11 +43,12 @@ def send_outlook_email(to_email, cc_emails, subject, body):
 
 def run_scraper(subject, body, clientlist):
     if len(clientlist) > 1:
-        plan_ids = clientlist
+        plan_ids = clientlist.strip().split('\n')
         print(plan_ids)
     else: 
         print("No list input, looking for Excel sheet")
         plan_ids = readExcel()
+        print(plan_ids)
     options_button.config(state=ttk.DISABLED)
     subprocess.run(r'"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\Users\crainey\Downloads\temp"', shell=True)
     # Initialize the Selenium web driver (assuming you're using Chrome)
@@ -65,7 +66,7 @@ def run_scraper(subject, body, clientlist):
     # Wait for the page to load
     # Loop through each plan ID and perform lookup
     for plan_id in plan_ids:
-        driver.get(f"https://crm.zoho.com/crm/org761441520/search?searchword={plan_id}")
+        driver.get(f"https://crm/search?searchword={plan_id}")
     
 
     
